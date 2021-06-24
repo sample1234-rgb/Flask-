@@ -13,10 +13,17 @@ def Resume():
         {'quali': 'Higher', 'duration': '4/2016 - 4/2018', 'name': 'APJ School', 'score': '9.35'},
         {'quali': 'Matrix', 'duration': '4/2015 - 4/2016', 'name': 'APJ School', 'score': '8.8'},
     ]}
-    skil = {'name': 'Skills', 'points': ['C/C++', 'Python', 'Django', 'Data Analytics', 'OOPs', 'Data Structures',
-                                         'DataBase Management System', 'Operating System', 'ReactJs', '3* CC']}
+    skil = {'name': 'Skills', 'points': ['C/C++', 'Python', 'Django', 'Data Analytics', 'OOPs',
+                                         'Data Structures and Algorithms', 'DataBase Management System',
+                                         'Operating System', 'ReactJs', '3* CodeChef']}
     data = [edu, skil]
     return render_template('resume.html', data=data)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('not_found.html'), 404
+
 
 @app.route('/projects')
 def project():

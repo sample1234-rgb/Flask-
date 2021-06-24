@@ -5,6 +5,13 @@ p {
     border-radius:10px;
     background-color:#e6e4c3;
 }
+.main{
+    border-radius:10px;
+    margin:10px;
+    display:flex;
+    padding:100px;
+    width:min-content;
+}
 @media (max-width:1000px){
     .main{
         flex-wrap:wrap;
@@ -12,13 +19,13 @@ p {
 }
 @media (max-width:600px){
     .main{
-        transform:translateX(-150px) scale(0.7);
-
+        transform:translateX(-80px) scale(0.7);
+        padding:0px;
     }
 }
 .cards {
     border-radius:10px;
-    background-color:lime;
+    background-color:#fffbbd;
     padding:2px 5px;
     margin:2px;
 }
@@ -56,6 +63,7 @@ a{
     width:95px;
     transition:0.5s;
     color:#f0f0f0;
+    cursor: pointer;
 }
 .footer{
     border:0px solid black;

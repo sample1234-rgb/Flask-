@@ -10,6 +10,7 @@
                         {{ d.name }}
                     </div>
                     {% if d.name == 'Skills' %}
+                        <div style="width:-webkit-fill-available;white-space:nowrap;"></div>
                         <div style="display: flex;flex-wrap: wrap;justify-content: flex-end;">
                             {% for p in d.points %}
                             <div class="cards">{{ p }}</div>
