@@ -1,0 +1,41 @@
+{% extends 'Base.html' %}
+<!--(Header-Part)-->
+{% block content %}
+<center>
+    <div style="border-radius:10px;background-color:#e6e4c3;padding:10px;">
+        <div style="border:2px solid black;border-radius:10px;margin:10px;padding:50px;">
+            <h1>Projects</h1>
+            {% for project in projects %}
+                {% if project.no%2 == 1 %}
+                    <div class="prj-item">
+                        <div class="prj" align="left">
+                            <b>Project No. {{ project.no }}:</b> {{ project.name }}
+                            <p class="desc">
+                                {{ project.desc }}
+                            </p>
+                        </div>
+                        <div class="prj" style="height:300px;width:500px;">
+                            <!--<img style="background-color:#abcedf;" src="static/images.jpg"/>-->
+                            An image
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="prj-item">
+                        <div class="prj" style="height:300px;width:500px;">
+                            <!-- <img />-->
+                            An image
+                        </div>
+                        <div class="prj" align="right">
+                            <strong>Project No. {{ project.no }}</strong>: {{ project.name }}
+                            <p class="desc">
+                                {{ project.desc }}
+                            </p>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</center>
+{% endblock %}
+<!--(Footer-Part)-->

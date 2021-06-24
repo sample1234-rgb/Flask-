@@ -1,0 +1,86 @@
+{% extends 'Base.html' %}
+<!--(Header-Part)-->
+{% block content %}
+<center>
+    <div style="border-radius:10px;background-color:#e6e4c3;padding:10px;">
+        <div style="border:2px solid black;border-radius:10px;margin:10px;padding:100px;">
+            {% for d in data %}
+                <div style="display:flex;flex-wrap: nowrap;justify-content: space-around;align-content: space-between;">
+                    <div style="border:0px solid black;width:300px;padding:10px;font-size:40px;" align="left">
+                        {{ d.name }}
+                    </div>
+                    {% if d.name == 'Skills' %}
+                        <div style="display: flex;flex-wrap: wrap;justify-content: flex-end;">
+                            {% for p in d.points %}
+                            <div class="cards">{{ p }}</div>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    <table>
+                        {% for point in d.points %}
+                            <tr style="width:300px;" align="left">
+                                <td style="display:flex;width:max-content;flex-wrap:nowrap;flex-direction: row;">
+                                    <p>{{ point.duration }}</p>
+                                </td>
+                                <td>
+                                    <p style="font-size:20px; ">{{ point.quali }}</p>
+                                    <p>{{ point.name }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+            <hr style="margin:20px;background-color:#e6e4c3;">
+            {% endfor %}
+
+<!--            <hr style="margin:20px;background-color:#e6e4c3;">-->
+
+<!--            {% for d in data %}-->
+<!--            <div style="display:flex;flex-wrap: nowrap;justify-content: space-around;align-content: space-between;">-->
+<!--                <div style="border:0px solid black;width:300px;padding:10px;font-size:32px;" align="left">-->
+<!--                    {{ d.heading }}-->
+<!--                </div>-->
+<!--                <table>-->
+<!--                    {% for point in d.points %}-->
+<!--                    <tr style="width:300px;" align="left">-->
+<!--                        <td style="display:flex;width:max-content;align-content:center;flex-wrap: nowrap;flex-direction: row;">-->
+<!--                            <p>{{ point.duration }}</p>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <p style="font-size:20px; ">{{ point.quali }}</p>-->
+<!--                            <p>{{ point.name }}</p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
+<!--                </table>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+
+<!--            <hr style="margin:20px;background-color:#e6e4c3;">-->
+
+<!--            {% for d in data %}-->
+<!--            <div style="display:flex;flex-wrap: nowrap;justify-content: space-around;align-content: space-between;">-->
+<!--                <div style="border:0px solid black;width:300px;padding:10px;font-size:32px;" align="left">-->
+<!--                    {{ d.heading }}-->
+<!--                </div>-->
+<!--                <table>-->
+<!--                    {% for point in d.points %}-->
+<!--                    <tr style="width:300px;" align="left">-->
+<!--                        <td style="display:flex;width:max-content;align-content:center;flex-wrap: nowrap;flex-direction: row;">-->
+<!--                            <p>{{ point.duration }}</p>-->
+<!--                        </td>-->
+<!--                        <td>-->
+<!--                            <p style="font-size:20px; ">{{ point.quali }}</p>-->
+<!--                            <p>{{ point.name }}</p>-->
+<!--                        </td>-->
+<!--                    </tr>-->
+<!--                    {% endfor %}-->
+<!--                </table>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+        </div>
+    </div>
+</center>
+{% endblock %}
+<!--(Footer-Part)-->

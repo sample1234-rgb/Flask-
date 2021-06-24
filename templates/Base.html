@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>My Resume Site</title>
+    <link rel="stylesheet" href="static/style.css" >
+</head>
+<body>
+    <div class="container" style="display:flex;padding:10px;">
+        <div style="display:flex;">
+            <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;">
+            </div>
+            <a href="{{ url_for('index') }}">Gaurav Bhardwaj</a>
+            <p>SDE</p>
+        </div>
+        <div style="width:-webkit-fill-available;">
+        </div>
+        <div style="display:flex;">
+            <a style="border-right:2px solid black;padding-right:2px;color:black;" href="{{ url_for('Resume') }}">
+                Resume
+            </a>
+            <a style="border-right:2px solid black;padding-right:2px;text-decoration:none;color:black;" href="{{ url_for('project') }}">
+                Project
+            </a>
+            <p>
+                Contact
+            </p>
+        </div>
+    </div>
+    <hr style="margin:20px;background-color:#e6e4c3;">
+    <!--(Header-Part)-->
+    {% block content %}
+    {% endblock %}
+    <!--(Footer-Part)-->
+    <hr style="margin:20px;background-color:#e6e4c3;">
+    <div style="border-radius:10px;background-color:#e6e4c3;padding:20px;">
+    <div style="display:flex;padding:20px;justify-content: space-evenly;flex-wrap: wrap;">
+        <div class="footer" align="left">
+            <p class="footer-ques">
+                Contact
+            </p>
+            <p class="footer-ans">
+                (+91) 628-391-3449
+            </p>
+        </div>
+        <div class="footer" align="left">
+            <p class="footer-ques">
+                Email
+            </p>
+            <p class="footer-ans">
+                bhardwajg2411@gmail.com
+            </p>
+        </div>
+        <div class="footer" align="left">
+            <p class="footer-ques">
+                Socials
+            </p>
+            <p class="footer-ans">
+                Insta: | Linkedin:
+            </p>
+        </div>
+<!--        <div class="footer" align="left">-->
+<!--            <p style="margin:2px;"></p>-->
+<!--            <p style="margin:2px;"></p>-->
+<!--        </div>-->
+    </div>
+</div>`
+</body>
+</html>
