@@ -14,7 +14,7 @@ def Resume():
         {'quali': 'Matrix', 'duration': '4/2015 - 4/2016', 'name': 'APJ School', 'score': '8.8'},
     ]}
     skil = {'name': 'Skills', 'points': ['C/C++', 'Python', 'Django', 'Data Analytics', 'OOPs',
-                                         'Data Structures and Algorithms', 'DataBase Management System',
+                                         'Data Structures and Algorithms', 'DBMS', 'Flask',
                                          'Operating System', 'ReactJs', '3* CodeChef']}
     data = [edu, skil]
     return render_template('resume.html', data=data)
@@ -29,7 +29,7 @@ def page_not_found(e):
 def project():
     projects = [
         {'no': 1, 'name': 'Resume builder GUI', 'desc': 'Resume builder for desktops build with Python + Tkinter'},
-        {'no': 2, 'name': 'Search Visualizer', 'desc': 'Using various Algorithms used for searching and finding elements'
+        {'no': 2, 'name': 'Search Visualizer', 'desc':'Using various Algorithms used for searching and finding elements'
          },
         {'no': 3, 'name': 'Record keeper', 'desc': 'A simple record keeping application for schools/colleges/organizations'
          }

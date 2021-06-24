@@ -1,16 +1,37 @@
-p {
-    margin: 2px;
-}
-.container{
+.page{
     border-radius:10px;
     background-color:#e6e4c3;
+    padding:10px;
 }
+.page-style{
+    border:2px solid black;
+    border-radius:10px;
+    margin:10px;
+    padding:100px;
+}
+.header{
+    border-radius:10px;
+    background-color:#e6e4c3;
+    display:flex;
+}
+/* header Part */
+p {margin:2px;}
 .main{
     border-radius:10px;
     margin:10px;
     display:flex;
     padding:100px;
     width:min-content;
+}
+.flex-bxs{
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-content: space-between;
+}
+.white-spaces{
+    width:-webkit-fill-available;
+    white-space:nowrap;
 }
 @media (max-width:1000px){
     .main{
@@ -22,16 +43,31 @@ p {
         transform:translateX(-80px) scale(0.7);
         padding:0px;
     }
+    .flex-bxs{
+        flex-wrap:wrap;
+    }
+    .header{
+        flex-wrap:wrap;
+        justify-content: space-evenly;
+    }
+    .white-spaces{
+        height:20px;
+    }
 }
+.heading{
+     width:300px;
+     padding:10px;
+     font-size:40px;
+ }
+
 .cards {
     border-radius:10px;
     background-color:#fffbbd;
     padding:2px 5px;
     margin:2px;
 }
-.cards:hover{
-    background-color:#abcdef;
-}
+.cards:hover{background-color:#abcdef;}
+
 a{
     text-decoration:none;
     color:white;
@@ -40,12 +76,14 @@ a{
     white-space:nowrap;
 }
 .profile-img{
+    border:2px solid black;
     height:400px;
     width:400px;
     border-radius:200px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .button{
     border:1px solid black;
     border-radius:50px;
@@ -65,6 +103,35 @@ a{
     color:#f0f0f0;
     cursor: pointer;
 }
+
+.prj{
+    width:-webkit-fill-available;
+    padding:10px;
+    font-size:24px;
+    font-family:Times New Roman;
+}
+.desc{
+    font-family: Arial;
+    margin-left:20px;
+    font-size:20px;
+}
+.prj-item{
+    margin:10px;
+    display:flex;
+    justify-content: space-between;
+}
+td-1{
+    display:flex;
+    width:max-content;
+    flex-wrap:nowrap;
+    flex-direction: row;
+}
+hr{
+    margin:20px;
+    background-color:#e6e4c3;
+}
+
+/* Footer Part */
 .footer{
     border:0px solid black;
     margin:20px;
@@ -81,20 +148,4 @@ a{
     margin-left:20px;
     font-size:12px;
     font-family:Arial;
-}
-.prj{
-    width:-webkit-fill-available;
-    padding:10px;
-    font-size:24px;
-    font-family:Times New Roman;
-}
-.desc{
-    font-family: Arial;
-    margin-left:20px;
-    font-size:20px;
-}
-.prj-item{
-    margin:10px;
-    display:flex;
-    justify-content: space-between;
 }
