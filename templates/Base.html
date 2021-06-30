@@ -21,9 +21,9 @@
                 <a style="border-right:2px solid black;padding-right:2px;text-decoration:none;color:black;" href="{{ url_for('project') }}">
                     Project
                 </a>
-                <p>
+                <a style="padding-right:2px;color:black;transition: 0.1s;" href="#Contact-Me" id="Meet">
                     Contact
-                </p>
+                </a>
             </div>
         </div>
         <hr>
@@ -32,14 +32,18 @@
         {% endblock %}
         <!--(Footer-Part)-->
         <hr>
-        <div class="page" style="padding:20px;">
+        <div class="page" style="padding:20px;scroll-behavior: smooth;" id="Contact-Me">
             <div style="display:flex;padding:20px;justify-content: space-evenly;flex-wrap: wrap;">
                 <div class="footer" align="left">
                     <p class="footer-ques">
                         Contact
                     </p>
                     <p class="footer-ans">
+                        <img src="static/india.png" id="flag"/>
                         (+91) 628-391-3449
+                    </p>
+                    <p class="footer-ans">
+                        842-7091-3449
                     </p>
                 </div>
                 <div class="footer" align="left">
@@ -49,15 +53,30 @@
                     <p class="footer-ans">
                         bhardwajg2411@gmail.com
                     </p>
+                    <p class="footer-ans">
+                        gauravb.cs.18@nitj.ac.in
+                    </p>
                 </div>
                 <div class="footer" align="left">
                     <p class="footer-ques">
                         Socials
                     </p>
                     <p class="footer-ans">
-                        Insta: | Linkedin:
+                        <a href="https://www.linkedin.com/in/gaurav-bhardwaj-666945177/"
+                           style="color:black;">
+                            <img src="static/linkedin.png" />
+                            Linkedin
+                        </a>
+                    </p>
+                    <p class="footer-ans">
+                        <a href="https://github.com/sample1234-rgb/College-Projects/tree/sample1234-rgb-GUI"
+                           style="color:black;">
+                            <img src="static/github.png" />
+                            Github
+                        </a>
                     </p>
                 </div>
+
             <!-- <div class="footer" align="left"><p style="margin:2px;"></p><p style="margin:2px;"></p></div> -->
             </div>
         </div>

@@ -27,7 +27,7 @@ p {margin:2px;}
     display:flex;
     flex-wrap: nowrap;
     justify-content: space-around;
-    align-content: space-between;
+    alig-n-content: spacebetween;
 }
 .white-spaces{
     width:-webkit-fill-available;

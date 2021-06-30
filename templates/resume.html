@@ -10,13 +10,12 @@
                         {{ d.name }}
                     </div>
                     {% if d.name == 'Skills' %}
-                        <div class="white-spaces"></div>
                         <div class="flex-bxs" style="flex-wrap: wrap;justify-content: flex-end;">
                             {% for p in d.points %}
-                            <div class="cards">{{ p }}</div>
+                                <div class="cards" onclick="info_open('{{ p.name }}', '{{ p.status }}');" id="{{ p.name }}">{{ p.name }}</div>
                             {% endfor %}
                         </div>
-                    {% else %}
+                    {% elif d.name == 'Education' %}
                     <table>
                         {% for point in d.points %}
                             <tr style="width:300px;" align="left">
@@ -26,10 +25,16 @@
                                 <td>
                                     <p style="font-size:20px;">{{ point.quali }}</p>
                                     <p>{{ point.name }}</p>
+                                    <p style="font-size:12px;">CGPA: {{ point.score }}</p>
                                 </td>
                             </tr>
                         {% endfor %}
                     </table>
+                    {% else %}
+                        <div class="white-spaces"></div>
+                        <div style="padding:5px;font-size:15px;" align="left">
+                            <p>{{ d.about|safe }}</p>
+                        </div>
                     {% endif %}
                 </div>
             <hr>
@@ -37,5 +42,22 @@
         </div>
     </div>
 </center>
+<script>
+    function info_close(name,lvl){
+        var id = document.getElementById(name);
+        id.setAttribute('onclick',info_open());
+        id.innerHTML=name;
+        alert(name);
+    }
+    function info_open(name,lvl){
+        var id = document.getElementById(name);
+        if( lvl == "Advance")var color='#80ff82';
+        else if( lvl == "Intermediate")var color='#e3ff80';
+        else var color='#ffdf80';
+        id.innerHTML=name+"<div style='background-color:"+color+";border-radius:5px;padding: 2px;font-size: 10px;' align='center'>"+lvl+"</div>";  //"<p style='color:"+color+";'>"+lvl+"</p>";
+<!--        id.setAttribute('onclick',info_close(name,lvl));-->
+<!--        alert(lvl);-->
+    }
+</script>
 {% endblock %}
 <!--(Footer-Part)-->

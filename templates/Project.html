@@ -2,8 +2,8 @@
 <!--(Header-Part)-->
 {% block content %}
 <center>
-    <div style="border-radius:10px;background-color:#e6e4c3;padding:10px;">
-        <div style="border:2px solid black;border-radius:10px;margin:10px;padding:50px;">
+    <div class="page">
+        <div class="page-style" style="padding:50px;">
             <h1>Projects</h1>
             {% for project in projects %}
                 {% if project.no%2 == 1 %}
@@ -15,7 +15,7 @@
                             </p>
                         </div>
                         <div class="prj" style="height:300px;width:500px;">
-                            <!--<img style="background-color:#abcedf;" src="static/images.jpg"/>-->
+<!--                             <img style="" width="300" height="200" src="{{ project.img }}"/>-->
                             An image
                         </div>
                     </div>
