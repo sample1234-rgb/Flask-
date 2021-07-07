@@ -1,0 +1,50 @@
+{% extends 'Base.html' %}
+<!--(Header-Part)-->
+{% block content %}
+<center>
+    <div class="page">
+        <div class="page-style" style="padding:50px;">
+            <h1>Certificates</h1>
+            {% for course in courses %}
+            <div style="display:flex;justify-content: space-around;">
+                <div>
+                    <h2>{{ course.name }}</h2>
+                    <p></p>
+                </div>
+                <img src="static/{{ course.img }}" width="330" height="255"/>
+            </div>
+            {% endfor %}
+<!--            {% for project in projects %}-->
+<!--                {% if project.no%2 == 1 %}-->
+<!--                    <div class="prj-item">-->
+<!--                    <div class="prj" align="left">-->
+<!--                        <b>Project No. {{ project.no }}:</b> {{ project.name }}-->
+<!--                        <p class="desc">-->
+<!--                            {{ project.desc }}-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                    <div class="prj" style="height:300px;width:500px;">-->
+<!--                        &lt;!&ndash;                             <img style="" width="300" height="200" src="{{ project.img }}"/>&ndash;&gt;-->
+<!--                        An image-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% else %}-->
+<!--                    <div class="prj-item">-->
+<!--                    <div class="prj" style="height:300px;width:500px;">-->
+<!--                        &lt;!&ndash; <img />&ndash;&gt;-->
+<!--                        An image-->
+<!--                    </div>-->
+<!--                    <div class="prj" align="right">-->
+<!--                        <strong>Project No. {{ project.no }}</strong>: {{ project.name }}-->
+<!--                        <p class="desc">-->
+<!--                            {{ project.desc }}-->
+<!--                        </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                {% endif %}-->
+<!--            {% endfor %}-->
+        </div>
+    </div>
+</center>
+{% endblock %}
+<!--(Footer-Part)-->

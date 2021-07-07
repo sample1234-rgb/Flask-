@@ -12,7 +12,7 @@
                     {% if d.name == 'Skills' %}
                         <div class="flex-bxs" style="flex-wrap: wrap;justify-content: flex-end;">
                             {% for p in d.points %}
-                                <div class="cards" onclick="info_open('{{ p.name }}', '{{ p.status }}');" id="{{ p.name }}">{{ p.name }}</div>
+                                <div class="cards" onclick="info_open('{{ p.name }}', '{{ p.status }}')" id="{{ p.name }}">{{ p.name }}</div>
                             {% endfor %}
                         </div>
                     {% elif d.name == 'Education' %}
@@ -45,18 +45,16 @@
 <script>
     function info_close(name,lvl){
         var id = document.getElementById(name);
-        id.setAttribute('onclick',info_open());
-        id.innerHTML=name;
-        alert(name);
+        id.setAttribute('onClick',"info_open('"+name+"','"+lvl+"')");
+        id.innerHTML = name;
     }
     function info_open(name,lvl){
         var id = document.getElementById(name);
         if( lvl == "Advance")var color='#80ff82';
         else if( lvl == "Intermediate")var color='#e3ff80';
         else var color='#ffdf80';
-        id.innerHTML=name+"<div style='background-color:"+color+";border-radius:5px;padding: 2px;font-size: 10px;' align='center'>"+lvl+"</div>";  //"<p style='color:"+color+";'>"+lvl+"</p>";
-<!--        id.setAttribute('onclick',info_close(name,lvl));-->
-<!--        alert(lvl);-->
+        id.innerHTML = name+"<div style='background-color:"+color+";border-radius:5px;padding: 2px;font-size: 10px;' align='center'>"+lvl+"</div>";  //"<p style='color:"+color+";'>"+lvl+"</p>";
+        id.setAttribute('onClick',"info_close('"+name+"','"+lvl+"')");
     }
 </script>
 {% endblock %}
