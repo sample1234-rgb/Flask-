@@ -11,19 +11,25 @@
                         <div class="prj" align="left">
                             <b>Project No. {{ project.no }}:</b> {{ project.name }}
                             <p class="desc">
-                                {{ project.desc }}
+                                {{ project.desc|safe }}
                             </p>
                         </div>
                         <div class="prj" style="height:300px;width:500px;">
-<!--                             <img style="" width="300" height="200" src="{{ project.img }}"/>-->
-                            An image
+                            {% if project.img %}
+                                <img style="" width="{{ project.imgdim[0] }}" height="{{ project.imgdim[1] }}" src="static/{{ project.img }}"/>
+                            {% else %}
+                                An image
+                            {% endif %}
                         </div>
                     </div>
                 {% else %}
                     <div class="prj-item">
                         <div class="prj" style="height:300px;width:500px;">
-                            <!-- <img />-->
-                            An image
+                            {% if project.img %}
+                                <img style="" width="{{ project.imgdim[0] }}" height="{{ project.imgdim[1] }}" src="static/{{ project.img }}"/>
+                            {% else %}
+                                An image
+                            {% endif %}
                         </div>
                         <div class="prj" align="right">
                             <strong>Project No. {{ project.no }}</strong>: {{ project.name }}

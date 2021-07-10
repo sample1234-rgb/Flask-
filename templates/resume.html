@@ -10,7 +10,7 @@
                         {{ d.name }}
                     </div>
                     {% if d.name == 'Skills' %}
-                        <div class="flex-bxs" style="flex-wrap: wrap;justify-content: flex-end;">
+                        <div class="flex-bxs" style="flex-wrap: wrap;justify-content: flex-end;align-content:normal;">
                             {% for p in d.points %}
                                 <div class="cards" onclick="info_open('{{ p.name }}', '{{ p.status }}')" id="{{ p.name }}">{{ p.name }}</div>
                             {% endfor %}

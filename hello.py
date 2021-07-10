@@ -1,12 +1,82 @@
-from flask import Flask, render_template, make_response
+from flask import Flask, render_template, make_response, request, redirect, url_for, flash
 from reportlab.pdfgen import canvas
 from reportlab.platypus.flowables import Image
+from flask_mail import Mail, Message
+from wtforms import Form, StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+# from setting import initiate
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     return render_template('hello.html')
+
+# initiate(app)
+
+app.config['SECRET_KEY'] = 'Selena | Gaurav'
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'bhardwajg2411@gmail.com'
+app.config['MAIL_PASSWORD'] = 'dakapqctjyffjrrc'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
+
+db = SQLAlchemy(app)
+class Users(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(20), nullable=False, unique=True)
+    comment = db.Column(db.String(1200))
+    date_added = db.Column(db.DateTime, default=datetime.utcnow)
+
+    def __repr__(self):
+        return '<NAME %r>'%self.name
+
+class forms(Form):
+    name = StringField('Your Name', validators=[DataRequired()])
+    email = StringField('Your Email', validators=[DataRequired(), Email()])
+    context = TextAreaField('Your Suggestions:')
+    btn = SubmitField('Send')
+
+@app.route('/reach', methods=['GET', 'POST'])
+def reach():
+    name, email, context = None, None, None
+    form = forms(request.form)
+
+    if request.method == 'POST' and form.validate():
+        name, email, context = form.name.data, form.email.data, form.context.data
+        user = Users.query.filter_by(email=form.email.data).first()
+        if user is None:
+            user = Users(name=name, email=email, comment=context)
+            db.session.add(user)
+            db.session.commit()
+        form.name.data, form.email.data, form.context.data = '', '', ''
+
+        # sending(sender=email, message=context)
+        # return render_template('form.html', name=name, email=email, context=context, form=form)
+    all_users = Users.query.order_by(Users.date_added)
+    return render_template('form.html', name=name, email=email, context=context, form=form, users=all_users)
+
+
+@app.route("/mail")
+def sending(sender, message):
+    try:
+        msg = Message(
+            'Hello Gaurav | Response to your website',
+            sender=sender,
+            recipients=['bhardwajg2411@gmail.com', 'gauravxprogram@gmail.com']
+        )
+        msg.body = message
+        mail.send(msg)
+        return redirect(url_for('reach'))
+    except Exception as e:
+        return str(e)
 
 class RotatedImage(Image):
     def wrap(self, availWidth, availHeight):
@@ -33,7 +103,6 @@ def ruler(pdf):
 
     pdf.drawString(570, 830, '-> x')
     pdf.drawString(2, 0, 'v\ny')
-
 
 @app.route('/pdf')
 def pdf_file():
@@ -135,18 +204,33 @@ def mn():
 @app.route('/projects')
 def project():
     projects = [
-        {'no': 1, 'name': 'Resume builder GUI', 'desc': 'Resume builder for desktops build with Python + Tkinter'},
-        {'no': 2, 'name': 'Search Visualizer', 'desc':'Using various Algorithms used for searching and finding elements'
+        {'no': 1, 'name': 'My Profile Web-app', 'desc': "The site you are currently watching is also a project of mine.<br/>"
+                                                        "All the things here is created from scratch by me using the<br/>"
+                                                        "development tool <b>Flask</b>, the working language <b>Python</b> and<br/>"
+                                                        " Web Front-end Fundamentals<br/> ", 'img': 'img.png',
+         'imgdim': [233, 300]},
+        {'no': 2, 'name': 'Resume builder GUI', 'desc': 'Resume builder for desktops build with Python + Tkinter.',
+        'img': 'GUI.png', 'imgdim': [555, 300]},
+        {'no': 3, 'name': 'Search Visualizer', 'desc':'Using various Algorithms used for searching and finding elements'
          },
-        {'no': 3, 'name': 'Record keeper', 'desc': 'A simple record keeping application for schools/colleges/organizations'
+        {'no': 4, 'name': 'Record keeper', 'desc': 'A simple record keeping application for schools/colleges/organizations'
          }
     ]
     return render_template('Project.html', projects=projects)
 
 @app.route('/exp')
 def exp():
-    courses = [{'name': 'AWS Fundamentals', 'img': 'AWS-1.jpg'}]
-    return render_template('exp.html', courses=courses)
+    list_courses = ['AWS', 'DeepLearning AI','Django for Everybody', 'Data Science']
+    courses = [{'name': 'AWS Fundamentals', 'img': 'Certi/AWS-1.jpg', 'course': 'AWS'},
+               {'name': 'Convolutional Neural Networks', 'img': 'Certi/CNN.jpg', 'course': 'DeepLearning AI'   },
+               {'name': 'Django Features & Libraries', 'img': 'Certi/Django-1.jpg', 'course': 'Django for Everybody'},
+               {'name': 'Web Technologies & Django', 'img': 'Certi/Django-2.jpg', 'course': 'Django for Everybody'  },
+               {'name': 'Building Web Apps in Django', 'img': 'Certi/Django-3.jpg', 'course': 'Django for Everybody'},
+               {'name': 'Machine Learning with Python', 'img': 'Certi/ML.jpg', 'course': 'Data Science'     },
+               {'name': 'Data Visualization with Python', 'img': 'Certi/DV.jpg', 'course': 'Data Science'   },
+               {'name': 'Data Analysis with Python', 'img': 'Certi/DA.jpg', 'course': 'Data Science'        },
+               {'name': 'Tools for Data Science', 'img': 'Certi/DS-Tools.jpg', 'course': 'Data Science'     }]
+    return render_template('exp.html', courses=courses, l=list_courses)
 
 
 if __name__ == '__main__':

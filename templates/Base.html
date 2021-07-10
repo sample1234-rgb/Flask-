@@ -6,14 +6,12 @@
 </head>
 <body>
         <div class="header" style="padding:10px;">
-            <div style="display:flex;">
-                <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;">
-                </div>
-                <a href="{{ url_for('index') }}">Gaurav Bhardwaj</a>
-                <p>SDE</p>
+            <div style="display:flex;align-items: center">
+                <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;"></div>
+                <a href="{{ url_for('index') }}" style="color:black;">Gaurav Bhardwaj</a>
+                <p></p>
             </div>
-            <div class="white-spaces">
-            </div>
+            <div class="white-spaces"></div>
             <div style="display:flex;">
                 <a style="border-right:2px solid black;padding-right:2px;color:black;" href="{{ url_for('Resume') }}">
                     Resume
@@ -36,52 +34,60 @@
         <!--(Footer-Part)-->
         <hr>
         <div class="page" style="padding:20px;scroll-behavior: smooth;" id="Contact-Me">
-            <div style="display:flex;padding:20px;justify-content: space-evenly;flex-wrap: wrap;">
-                <div class="footer" align="left">
-                    <p class="footer-ques">
-                        Contact
-                    </p>
-                    <p class="footer-ans">
-                        <img src="static/india.png" id="flag"/>
-                        (+91) 628-391-3449
-                    </p>
-                    <p class="footer-ans">
-                        842-793-2049
-                    </p>
-                </div>
-                <div class="footer" align="left">
-                    <p class="footer-ques">
-                        Email
-                    </p>
-                    <p class="footer-ans">
-                        <img src="static/at.png" />
-                        bhardwajg2411@gmail.com
-                    </p>
-                    <p class="footer-ans">
-                        <img src="static/at.png" />
-                        gauravb.cs.18@nitj.ac.in
-                    </p>
-                </div>
-                <div class="footer" align="left">
-                    <p class="footer-ques">
-                        Socials
-                    </p>
-                    <p class="footer-ans">
-                        <a href="https://www.linkedin.com/in/gaurav-bhardwaj-666945177/"
-                           style="color:black;">
-                            <img src="static/linkedin.png" />
-                            Linkedin
-                        </a>
-                    </p>
-                    <p class="footer-ans">
-                        <a href="https://github.com/sample1234-rgb/College-Projects/tree/sample1234-rgb-GUI"
-                           style="color:black;">
-                            <img src="static/github.png" />
-                            Github
-                        </a>
-                    </p>
-                </div>
+        <div class="foot">
+            <div class="footer" align="left">
+                <p class="footer-ques">
+                    Contact
+                </p>
+                <p class="footer-ans">
+                    <img src="static/india.png" />
+                    (+91) 628-391-3449
+                </p>
+                <p class="footer-ans">
+                    <img src="static/india.png" />
+                    (+91) 842-793-2049
+                </p>
+            </div>
+            <div class="footer" align="left">
+                <p class="footer-ques">
+                    Email
+                </p>
+                <p class="footer-ans">
+                    <img src="static/at.png" />
+                    bhardwajg2411@gmail.com
+                </p>
+                <p class="footer-ans">
+                    <img src="static/at.png" />
+                    gauravb.cs.18@nitj.ac.in
+                </p>
+            </div>
+            <div class="footer" align="left">
+                <p class="footer-ques">
+                    Socials
+                </p>
+                <p class="footer-ans">
+                    <a href="https://www.linkedin.com/in/gaurav-bhardwaj-666945177/"
+                       style="color:black;">
+                        <img src="static/linkedin.png" />
+                        Linkedin
+                    </a>
+                </p>
+                <p class="footer-ans">
+                    <a href="https://github.com/sample1234-rgb/College-Projects/tree/sample1234-rgb-GUI"
+                       style="color:black;">
+                        <img src="static/github.png" />
+                        Github
+                    </a>
+                </p>
+            </div>
+            <div class="footer" align="left">
+                <p class="footer-ans btn">
+                    <a href="{{ url_for('exp') }}" style="color:black;">
+                        Suggestions ▼
+                    </a>
+                </p>
             </div>
         </div>
+    </div>
 </body>
 </html>

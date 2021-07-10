@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Message</title>
+    <style>
+        .section{
+            border:0px solid;
+            border-radius:5px;
+            background-color:#abcdef;
+            padding:10px;
+            width:min-content;
+        }
+        .inputs{
+            border:1px solid;
+            border-radius:5px;
+            background-color:#fafcfe;
+            font-size:20px;
+            margin:10px;
+        }
+        form{
+            border:1px solid;
+            border-radius:5px;
+            background-color:#fedcba;
+            width:min-content;
+            position:sticky;
+        }
+        .button{
+            border:1px solid;
+            border-radius:5px;
+            background-color:#abcdef;
+            font-size:20px;
+            margin:10px;
+            width:-webkit-fill-available;
+        }
+        /* width */
+        .scroll::-webkit-scrollbar {
+          width: 10px;
+        }
+
+        /* Track */
+        .scroll::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius:5px;
+        }
+
+        /* Handle */
+        .scroll::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius:2px;
+        }
+
+        /* Handle on hover */
+        .scroll::-webkit-scrollbar-thumb:hover {
+          background-image: linear-gradient(rgba(0,225,0,0.2), rgba(0,225,0,1));
+        }
+
+        .scroll{
+            width:initial;
+            height:350px;
+            overflow:hidden;
+            overflow-y:scroll;
+        }
+        .comment h5,.comment p{
+            margin:0px;
+
+        }
+        .comment p.Email{
+            font-size:10px;
+        }
+        .comment{
+            width:-webkit-fill-available;
+            background-color:#fbdcae;
+            border:1px solid;
+            margin: 0px 0px 5px 0px;
+        }
+        .Comment{
+            width:-webkit-fill-available;
+            background-color:#fbdcfe;
+        }
+        .grid-container{
+            display:grid;
+            grid-template-columns: auto auto;
+            grid-gap: 2px;
+        }
+        .grid-container > div {
+          background-color: rgba(255, 255, 255, 0.8);
+          border: 1px solid black;
+          text-align: center;
+          font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="grid-container" style="grid-template-areas:
+        'header header header header header header header header header'
+        'main main main main main main main main menu'
+        'footer footer footer footer footer footer footer footer menu';">
+    <div class="grid-item" style="grid-area:header;"></div>
+    <div class="grid-item" style="grid-area:main;">Main</div>
+    <div class="grid-item" style="grid-area:menu; width:min-content;text-align: left;">
+        <div class="section">
+    <div class="section" style="width:initial;background-color:#fdbcae;">
+        <div class="scroll">
+            {% for user in users %}
+            <div class="comment section">
+                <div style="display:flex;justify-content: space-between;align-items: center;">
+                    <h5 class="Auther">{{ user.name }}</h5>
+                    <p class="Email">{{ user.date_added.date() }}</p>
+                </div>
+                <p class="Email">{{ user.email }}</p>
+                <p class="Comment section">{{ user.comment }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if name and email %}
+        <p>Thanks {{ name }}({{ email }}), for your suggestions:<br/> {{ context }}</p>
+    {% else %}
+        <form method="post">
+            {% if form.error %}
+                <div class="inputs">
+                    {{ message }}</div>
+            {% endif %}
+
+            {{ form.hidden_tag }}
+
+            {{ form.name(class='inputs',placeholder='Your Good Name') }}
+
+            {{ form.email(class='inputs',placeholder='Your Email') }}
+
+            {{ form.context(class='inputs',placeholder='Any Suggestions') }}
+
+            {{ form.btn(class='button') }}
+        </form>
+    {% endif %}
+    </div>
+    </div>
+    <div class="grid-item" style="grid-area:footer">Footer</div>
+</div>
+</body>
+</html>

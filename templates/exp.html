@@ -5,46 +5,100 @@
     <div class="page">
         <div class="page-style" style="padding:50px;">
             <h1>Certificates</h1>
-            {% for course in courses %}
-            <div style="display:flex;justify-content: space-around;">
-                <div>
-                    <h2>{{ course.name }}</h2>
-                    <p></p>
+            <div class="grid-container" style="grid-gap:10px;">
+                {% for c in l %}
+                <div class="grid-container">
+                    <div style="transform: rotate(-90deg) translate(-65px,-20px);width:max-content;height: min-content;">{{ c }}</div>
+                    <div class="grid-container" style="">
+                        {% for course in courses %}
+                            {% if c == course.course %}
+                                <div class="certi">
+                                    <div class="certi-text">
+                                        <h2>{{ course.name }}</h2>
+                                        <p></p>
+                                    </div>
+                                    <img src="static/{{ course.img }}" width="129" height="100"/>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
-                <img src="static/{{ course.img }}" width="330" height="255"/>
+                {% endfor %}
             </div>
-            {% endfor %}
-<!--            {% for project in projects %}-->
-<!--                {% if project.no%2 == 1 %}-->
-<!--                    <div class="prj-item">-->
-<!--                    <div class="prj" align="left">-->
-<!--                        <b>Project No. {{ project.no }}:</b> {{ project.name }}-->
-<!--                        <p class="desc">-->
-<!--                            {{ project.desc }}-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                    <div class="prj" style="height:300px;width:500px;">-->
-<!--                        &lt;!&ndash;                             <img style="" width="300" height="200" src="{{ project.img }}"/>&ndash;&gt;-->
-<!--                        An image-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                {% else %}-->
-<!--                    <div class="prj-item">-->
-<!--                    <div class="prj" style="height:300px;width:500px;">-->
-<!--                        &lt;!&ndash; <img />&ndash;&gt;-->
-<!--                        An image-->
-<!--                    </div>-->
-<!--                    <div class="prj" align="right">-->
-<!--                        <strong>Project No. {{ project.no }}</strong>: {{ project.name }}-->
-<!--                        <p class="desc">-->
-<!--                            {{ project.desc }}-->
-<!--                        </p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                {% endif %}-->
-<!--            {% endfor %}-->
+            <hr>
+            <h1>Internships</h1>
+            <div>
+                No Internships Yet 😥
+            </div>
+            <hr>
+            <h1>Full-Time</h1>
+            <div>
+                0+ Years Experience 😐
+            </div>
         </div>
     </div>
 </center>
 {% endblock %}
 <!--(Footer-Part)-->
+
+<!-- Hover Effect -->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <style>-->
+<!--.container {-->
+<!--  position: relative;-->
+<!--  width: 50%;-->
+<!--}-->
+
+<!--.image {-->
+<!--  display: block;-->
+<!--  width: 100%;-->
+<!--  height: auto;-->
+<!--}-->
+
+<!--.overlay {-->
+<!--  position: absolute;-->
+<!--  bottom: 0;-->
+<!--  left: 100%;-->
+<!--  right: 0;-->
+<!--  background-color: #008CBA;-->
+<!--  overflow: hidden;-->
+<!--  width: 0;-->
+<!--  height: 100%;-->
+<!--  transition: .5s ease;-->
+<!--}-->
+
+<!--.container:hover .overlay {-->
+<!--  width: 100%;-->
+<!--  left: 0;-->
+<!--  opacity:0.5;-->
+<!--}-->
+<!--.text {-->
+<!--  color: white;-->
+<!--  font-size: 20px;-->
+<!--  position: absolute;-->
+<!--  top: 50%;-->
+<!--  left: 50%;-->
+<!--  -webkit-transform: translate(-50%, -50%);-->
+<!--  -ms-transform: translate(-50%, -50%);-->
+<!--  transform: translate(-50%, -50%);-->
+<!--  white-space: nowrap;-->
+<!--}-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<h2>Slide in Overlay from the Right</h2>-->
+<!--<p>Hover over the image to see the effect.</p>-->
+
+<!--<div class="container">-->
+<!--    <img src="img_avatar.png" alt="Avatar" class="image">-->
+<!--    <div class="overlay">-->
+<!--        <div class="text">Hello World</div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
