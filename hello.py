@@ -6,7 +6,7 @@ from wtforms import Form, StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Email
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-# from setting import initiate
+from setting import initiate
 
 app = Flask(__name__)
 
@@ -14,18 +14,18 @@ app = Flask(__name__)
 def index():
     return render_template('hello.html')
 
-# initiate(app)
+initiate(app)
 
-app.config['SECRET_KEY'] = 'Selena | Gaurav'
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'bhardwajg2411@gmail.com'
-app.config['MAIL_PASSWORD'] = 'dakapqctjyffjrrc'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+# app.config['SECRET_KEY'] = '****************'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///****.db'
+# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = '***********@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'da************rc'
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
 
 mail = Mail(app)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
 db = SQLAlchemy(app)
 class Users(db.Model):
