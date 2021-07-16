@@ -2,92 +2,148 @@
 <html lang="en">
 <head>
     <title>My Resume Site</title>
+    <link rel="icon" href="static/favicon.ico">
     <link rel="stylesheet" href="static/style.css" >
 </head>
 <body>
+<div class="container">
+    <div class="items">
         <div class="header" style="padding:10px;">
-            <div style="display:flex;align-items: center">
-                <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;"></div>
-                <a href="{{ url_for('index') }}" style="color:black;">Gaurav Bhardwaj</a>
-                <p></p>
-            </div>
-            <div class="white-spaces"></div>
-            <div style="display:flex;">
-                <a style="border-right:2px solid black;padding-right:2px;color:black;" href="{{ url_for('Resume') }}">
-                    Resume
-                </a>
-                <a style="border-right:2px solid black;padding-right:2px;text-decoration:none;color:black;" href="{{ url_for('project') }}">
-                    Project
-                </a>
-                <a style="border-right:2px solid black;padding-right:2px;color:black;transition: 0.1s;" href="#Contact-Me" id="Meet">
-                    Contact
-                </a>
-                <a style="padding-right:2px;color:black;transition: 0.1s;" href="{{ url_for('exp') }}" id="exp">
-                    Work
-                </a>
-            </div>
+        <div style="display:flex;align-items: center">
+            <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;"></div>
+            <a href="{{ url_for('index') }}" style="color:black;">Gaurav Bhardwaj</a>
+            <p></p>
         </div>
+        <div class="white-spaces"></div>
+        <div style="display:flex;">
+            <a class="nav-links" style="border-left:0px;" href="{{ url_for('resume') }}">
+                Resume
+            </a>
+            <a class="nav-links" style="" href="{{ url_for('project') }}">
+                Project
+            </a>
+            <a class="nav-links" style="" href="#Contact-Me" id="Meet">
+                Contact
+            </a>
+            <a class="nav-links" style="border-right:0px;" href="{{ url_for('exp') }}" id="exp">
+                Work
+            </a>
+        </div>
+    </div>
         <hr>
         <!--(Header-Part)-->
-        {% block content %}
-        {% endblock %}
-        <!--(Footer-Part)-->
-        <hr>
-        <div class="page" style="padding:20px;scroll-behavior: smooth;" id="Contact-Me">
-        <div class="foot">
-            <div class="footer" align="left">
-                <p class="footer-ques">
-                    Contact
-                </p>
-                <p class="footer-ans">
-                    <img src="static/india.png" />
-                    (+91) 628-391-3449
-                </p>
-                <p class="footer-ans">
-                    <img src="static/india.png" />
-                    (+91) 842-793-2049
-                </p>
-            </div>
-            <div class="footer" align="left">
-                <p class="footer-ques">
-                    Email
-                </p>
-                <p class="footer-ans">
-                    <img src="static/at.png" />
-                    bhardwajg2411@gmail.com
-                </p>
-                <p class="footer-ans">
-                    <img src="static/at.png" />
-                    gauravb.cs.18@nitj.ac.in
-                </p>
-            </div>
-            <div class="footer" align="left">
-                <p class="footer-ques">
-                    Socials
-                </p>
-                <p class="footer-ans">
-                    <a href="https://www.linkedin.com/in/gaurav-bhardwaj-666945177/"
-                       style="color:black;">
-                        <img src="static/linkedin.png" />
-                        Linkedin
-                    </a>
-                </p>
-                <p class="footer-ans">
-                    <a href="https://github.com/sample1234-rgb/College-Projects/tree/sample1234-rgb-GUI"
-                       style="color:black;">
-                        <img src="static/github.png" />
-                        Github
-                    </a>
-                </p>
-            </div>
-            <div class="footer" align="left">
-                <p class="footer-ans btn">
-                    <a href="{{ url_for('exp') }}" style="color:black;">
-                        Suggestions ▼
-                    </a>
-                </p>
+    </div>
+    <div class="flex" id="flex">
+        <div class="items">
+            {% block content %}
+            {% endblock %}
+        </div>
+            <!--(Footer-Part)-->
+        <div class="items">
+            <hr>
+            <div class="page" style="padding:20px;scroll-behavior: smooth;" id="Contact-Me">
+                <div class="foot">
+                    <div class="footer" align="left">
+                        <p class="footer-ques">
+                            Contact
+                        </p>
+                        <p class="footer-ans">
+                            <img src="static/india.png" />
+                            (+91) 628-391-3449
+                        </p>
+                        <p class="footer-ans">
+                            <img src="static/india.png" />
+                            (+91) 842-793-2049
+                        </p>
+                    </div>
+                    <div class="footer" align="left">
+                        <p class="footer-ques">
+                            Email
+                        </p>
+                        <p class="footer-ans">
+                            <img src="static/at.png" />
+                            bhardwajg2411@gmail.com
+                        </p>
+                        <p class="footer-ans">
+                            <img src="static/at.png" />
+                            gauravb.cs.18@nitj.ac.in
+                        </p>
+                    </div>
+                    <div class="footer" align="left">
+                        <p class="footer-ques">
+                            Socials
+                        </p>
+                        <p class="footer-ans">
+                            <a href="https://www.linkedin.com/in/gaurav-bhardwaj-666945177/"
+                               style="color:black;">
+                                <img src="static/linkedin.png" />
+                                Linkedin
+                            </a>
+                        </p>
+                        <p class="footer-ans">
+                            <a href="https://github.com/sample1234-rgb/College-Projects/tree/sample1234-rgb-GUI"
+                               style="color:black;">
+                                <img src="static/github.png" />
+                                Github
+                            </a>
+                        </p>
+                    </div>
+                    <div class="footer" align="left">
+                        <p class="footer-ans btn">
+                            <div class="button2" onclick="show()" style="color:black;" id="foot-btn">
+                                Suggestions ▼
+                            </div>
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Left-Panel -->
+    <div class="items" id="left-pane" style="display:none;">
+        <div class="section">
+            <div class="section" style="width:initial;background-color:#fdbcae;">
+                <div class="scroll">
+                    {% for user in users %}
+                    <div class="comment section">
+                        <div style="display:flex;justify-content: space-between;align-items: center;">
+                            <h5 class="Auther">user.name</h5>
+                            <p class="Email">user.date_added.date</p>
+                        </div>
+                        <p class="Email">user.email</p>
+                        <p class="Comment section">user.comment</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <form method="post">
+                if form.error
+                <div class="inputs">
+                    message</div>
+                endif
+                form.hidden_tag
+                form.name(class='inputs',placeholder='Your Good Name')
+                form.email(class='inputs',placeholder='Your Email')
+                form.context(class='inputs',placeholder='Any Suggestions')
+                form.btn(class='button2')
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    var btn = document.getElementById('foot-btn');
+    var sect = document.getElementById('left-pane');
+    var flx_btn = document.getElementById('flex');
+    function hide(){
+        sect.style.display='none';
+        flx_btn.style.gridColumn='1/6';
+        btn.setAttribute('onClick',"show()");
+    }
+    function show(){
+        sect.style.display='grid';
+        flx_btn.style.gridColumn='1/5';
+        btn.setAttribute('onClick',"hide()");
+    }
+</script>
 </body>
 </html>

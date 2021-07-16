@@ -4,14 +4,14 @@
 <center>
     <div class="page">
         <div class="page-style" style="padding:50px;">
-            <h1>Certificates</h1>
+            <h1>Certifications</h1>
             <div class="grid-container" style="grid-gap:10px;">
                 {% for c in l %}
-                <div class="grid-container">
-                    <div style="transform: rotate(-90deg) translate(-65px,-20px);width:max-content;height: min-content;">{{ c }}</div>
-                    <div class="grid-container" style="">
+                <div class="grid-container grid-item" style="">
+                    <div class="grid-container inner" style="">
                         {% for course in courses %}
                             {% if c == course.course %}
+                            <div class="grid-item">
                                 <div class="certi">
                                     <div class="certi-text">
                                         <h2>{{ course.name }}</h2>
@@ -19,21 +19,29 @@
                                     </div>
                                     <img src="static/{{ course.img }}" width="129" height="100"/>
                                 </div>
+                            </div>
                             {% endif %}
                         {% endfor %}
                     </div>
+                    <div class="blur"></div>
                 </div>
                 {% endfor %}
             </div>
             <hr>
             <h1>Internships</h1>
             <div>
-                No Internships Yet 😥
+                Always looking for the opporunity
+                <span>
+                    <img src="static/happy.png" />
+                </span>
             </div>
             <hr>
             <h1>Full-Time</h1>
             <div>
-                0+ Years Experience 😐
+                0+ Years Experience
+                <span>
+                    <img src="static/crying.png" />
+                </span>
             </div>
         </div>
     </div>

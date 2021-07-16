@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +26,7 @@
             width:min-content;
             position:sticky;
         }
-        .button{
+        .button2{
             border:1px solid;
             border-radius:5px;
             background-color:#abcdef;
@@ -61,9 +62,9 @@
             overflow:hidden;
             overflow-y:scroll;
         }
+
         .comment h5,.comment p{
             margin:0px;
-
         }
         .comment p.Email{
             font-size:10px;
@@ -74,69 +75,79 @@
             border:1px solid;
             margin: 0px 0px 5px 0px;
         }
+
         .Comment{
             width:-webkit-fill-available;
             background-color:#fbdcfe;
         }
-        .grid-container{
+
+        .container{
             display:grid;
-            grid-template-columns: auto auto;
-            grid-gap: 2px;
+            grid-template-columns: repeat(5,1fr);
+            grid-gap: 5px;
         }
-        .grid-container > div {
-          background-color: rgba(255, 255, 255, 0.8);
-          border: 1px solid black;
-          text-align: center;
-          font-size: 20px;
+
+        .container > div {
+            background-color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            font-size: 20px;
+            display:flex;
+            flex-direction: column;
+        }
+        .container > div:nth-of-type(1){
+            grid-column:1/6;
+        }
+
+        .container > div:nth-of-type(2){
+            grid-column:1/5;
+            display:flex;
+            justify-content: space-between;
+        }
+        .flex{
+            grid-column:1/6;
         }
     </style>
 </head>
 <body>
-<div class="grid-container" style="grid-template-areas:
-        'header header header header header header header header header'
-        'main main main main main main main main menu'
-        'footer footer footer footer footer footer footer footer menu';">
-    <div class="grid-item" style="grid-area:header;"></div>
-    <div class="grid-item" style="grid-area:main;">Main</div>
-    <div class="grid-item" style="grid-area:menu; width:min-content;text-align: left;">
+<div class="container">
+    <div class="grid-item" id="left-pane">
         <div class="section">
-    <div class="section" style="width:initial;background-color:#fdbcae;">
-        <div class="scroll">
-            {% for user in users %}
-            <div class="comment section">
-                <div style="display:flex;justify-content: space-between;align-items: center;">
-                    <h5 class="Auther">{{ user.name }}</h5>
-                    <p class="Email">{{ user.date_added.date() }}</p>
+            <div class="section" style="width:initial;background-color:#fdbcae;">
+                <div class="scroll">
+                    {% for user in users %}
+                    <div class="comment section">
+                        <div style="display:flex;justify-content: space-between;align-items: center;">
+                            <h5 class="Auther">{{ user.name }}</h5>
+                            <p class="Email">{{ user.date_added.date() }}</p>
+                        </div>
+                        <p class="Email">{{ user.email }}</p>
+                        <p class="Comment section">{{ user.comment }}</p>
+                    </div>
+                    {% endfor %}
                 </div>
-                <p class="Email">{{ user.email }}</p>
-                <p class="Comment section">{{ user.comment }}</p>
             </div>
-            {% endfor %}
+            {% if name and email %}
+                <p>Thanks {{ name }}({{ email }}), for your suggestions:<br/> {{ context }}</p>
+            {% else %}
+                <form method="post">
+                    {% if form.error %}
+                        <div class="inputs">
+                            {{ message }}</div>
+                    {% endif %}
+
+                    {{ form.hidden_tag }}
+
+                    {{ form.name(class='inputs',placeholder='Your Good Name') }}
+
+                    {{ form.email(class='inputs',placeholder='Your Email') }}
+
+                    {{ form.context(class='inputs',placeholder='Any Suggestions') }}
+
+                    {{ form.btn(class='button2') }}
+                </form>
+            {% endif %}
         </div>
     </div>
-    {% if name and email %}
-        <p>Thanks {{ name }}({{ email }}), for your suggestions:<br/> {{ context }}</p>
-    {% else %}
-        <form method="post">
-            {% if form.error %}
-                <div class="inputs">
-                    {{ message }}</div>
-            {% endif %}
-
-            {{ form.hidden_tag }}
-
-            {{ form.name(class='inputs',placeholder='Your Good Name') }}
-
-            {{ form.email(class='inputs',placeholder='Your Email') }}
-
-            {{ form.context(class='inputs',placeholder='Any Suggestions') }}
-
-            {{ form.btn(class='button') }}
-        </form>
-    {% endif %}
-    </div>
-    </div>
-    <div class="grid-item" style="grid-area:footer">Footer</div>
 </div>
 </body>
 </html>
