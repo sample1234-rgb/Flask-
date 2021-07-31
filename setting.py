@@ -9,4 +9,4 @@ def initiate(app):
     app.config['MAIL_USE_SSL'] = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
-    # return app
+    return app

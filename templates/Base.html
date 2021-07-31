@@ -3,33 +3,25 @@
 <head>
     <title>My Resume Site</title>
     <link rel="icon" href="static/favicon.ico">
-    <link rel="stylesheet" href="static/style.css" >
+    <link rel="stylesheet" href="static/style.css" />
 </head>
 <body>
 <div class="container">
     <div class="items">
-        <div class="header" style="padding:10px;">
-        <div style="display:flex;align-items: center">
-            <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;"></div>
-            <a href="{{ url_for('index') }}" style="color:black;">Gaurav Bhardwaj</a>
-            <p></p>
+        <div class="header">
+            <div style="display:flex;align-items: center">
+                <div style="border-radius:20px;height:20px;width:20px;background-color:#ffff52;padding:1px;"></div>
+                <a href="{{ url_for('index') }}" style="">Gaurav Bhardwaj</a>
+                <p></p>
+            </div>
+            <div class="white-spaces"></div>
+            <div class="nav">
+                <a class="nav-links" href="{{ url_for('resume') }}">Resume</a>
+                <a class="nav-links" href="{{ url_for('project') }}">Project</a>
+                <a class="nav-links" href="#Contact-Me" id="Meet">Contact</a>
+                <a class="nav-links" href="{{ url_for('exp') }}" id="exp">Work</a>
+            </div>
         </div>
-        <div class="white-spaces"></div>
-        <div style="display:flex;">
-            <a class="nav-links" style="border-left:0px;" href="{{ url_for('resume') }}">
-                Resume
-            </a>
-            <a class="nav-links" style="" href="{{ url_for('project') }}">
-                Project
-            </a>
-            <a class="nav-links" style="" href="#Contact-Me" id="Meet">
-                Contact
-            </a>
-            <a class="nav-links" style="border-right:0px;" href="{{ url_for('exp') }}" id="exp">
-                Work
-            </a>
-        </div>
-    </div>
         <hr>
         <!--(Header-Part)-->
     </div>

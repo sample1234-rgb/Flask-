@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <style>
+        body{background-color:#5eb7ff;}
+        .cam{
+            border:5px solid;
+            background-color:#f6f6f6;
+            width:fit-content;
+        }
+        #cam-1{
+            width:400px;
+            height:300px;
+            transform: rotateY(180deg);
+            -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+            -moz-transform:rotateY(180deg); /* Firefox */
+        }
+        .button{
+            background-color:white;
+            border-radius:20px;
+            font-size:25px;
+            margin:2px;
+            border:0px;
+            width:-webkit-fill-available;
+        }
+        .button:hover{
+            background-color:black;
+            border-radius:15px;
+            color:white;
+            transition:0.4s;
+        }
+        progress[value] {
+          -webkit-appearance: none;
+           appearance: none;
+        }
+        progress[value]::-webkit-progress-bar {
+            background-color:#ccc;
+            display: inline-block;
+            -webkit-border-radius: 10px;
+            height:20px;
+        }
+        progress[value]::-webkit-progress-value {
+            background-color: #f1f1f1;
+            display: inline-block;
+            -webkit-border-radius: 10px;
+            background-image: linear-gradient(90deg,rgba(230,255,0,0.2), rgba(0,255,0,1));
+            height:20px;
+        }
+        progress{
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color:white;
+            -webkit-border-radius: 20px;
+        }
+        .labels{
+          width:max-content;
+          background-color:rgba(255,255,255,0.0);
+          display:flex;
+          align-items: center;
+          flex-direction: column;
+          justify-content: flex-end;
+          margin:0px 10px;
+        }
+        .labels .box{
+          background-color:rgba(255,255,255,0.7);
+          border:1px solid;
+          border-radius:15px;
+          width:100%;
+          margin:2px;
+        }
+        .content{
+          display:flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .pbar{
+          padding:0px 5px;
+          margin:10px;
+          width: -webkit-fill-available;
+        }
+        p{
+          margin:2px;
+          color:rgba(100,255,0,1);
+        }
+        p span{
+          font-size:10px;
+          font-weight: lighter;
+          color:black;
+        }
+        h1{
+          font-size:20px !Important;
+          width:max-content;
+          padding:5px;
+        }
+        .back{
+          position:relative;
+          display:inline-block;
+          background-color:#757575;
+          border-radius: 10px;
+          height:20px;
+          width:100%;
+          box-sizing:border-box;
+          border:1px solid;
+          padding:2px 0px;
+          overflow:hidden;
+        }
+        .bar{
+          position:absolute;
+          top:0px;
+          left:0px;
+          background-color: #f1f1f1;
+          border-radius: 6px;
+          background-image: linear-gradient(90deg,rgba(230,255,0,0.1), rgba(0,255,0,1));
+          height:65%;
+          margin:2px;
+          border:1px solid;
+          width:100%;
+        }
+        .bar:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            border:0px;
+            border-top: 10px solid #757575;
+            border-left: 10px solid rgba(0,255,0,0.0);
+            width: 0;
+        }
+        .bar:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            border:0px;
+            border-bottom: 10px solid #757575;
+            border-left: 10px solid rgba(0,255,0,0.0);
+            width: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div style="display:flex;">
+        <div style="border:2px solid;width:min-content;">
+            <div class="cam">
+                <video autoplay id="cam-1" ></video>
+            </div>
+            <div class="button" style="padding:5px;border-radius:30px;">
+                <button class="button" onclick="Capture()" id="scanner">Scan</button>
+            </div>
+        </div>
+        <!-- Observations -->
+        {% if model %}
+            <div class="labels">
+                {% if model.result[0] > 0.5 %}
+                <div class="box">
+                    <div class="content">
+                        <div class="pbar">
+                            <progress value="{{ model.result[0]*100 }}" max="100" aria-valuemin="0" id="cl1"></progress>
+                        </div>
+                        <h1>Mobile</h1>
+                    </div>
+                </div>
+                {% else %}
+                <div class="box">
+                    <div class="content">
+                        <div class="pbar">
+                            <div class="back">
+                                <div class="bar" id="cl2"></div>
+                            </div>
+                        </div>
+                        <p id="p1">{{ model.result[0]*100 }}<span>%</span></p>
+                        <h1>Mask</h1>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        {% else %}
+            <div class="labels">
+                <div class="box">
+                    <div class="content">
+                        <div class="pbar">
+                            <progress value="50" max="100" aria-valuemin="0" id="cl3"></progress>
+                        </div>
+                        <h1>Mobile</h1>
+                    </div>
+                </div>
+                <div class="box">
+                    <div class="content">
+                        <div class="pbar">
+                            <div class="back">
+                                <div class="bar" id="cl4"></div>
+                            </div>
+                        </div>
+                        <p id="p2">0.0<span>%</span></p>
+                        <h1>Mask</h1>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <div>
+        <!-- Model Description -->
+        <div style="display:flex;">
+            <div style="padding:2px;margin:2px;background-color:white;" id="layer-1">
+                <!-- Layer 1 -->
+                Layer 1
+            </div>
+            <div style="padding:2px;margin:2px;background-color:white;">
+                <!-- Layer 2 -->
+                Layer 2
+            </div>
+        </div>
+    </div>
+    <div style="display:none;">
+        <div class="cam">
+            <canvas id="Canvas" width="450" height="300"></canvas>
+        </div>
+        <a id="links">Download</a>
+        <form method="post" action="/cam" enctype="multipart/form-data">
+            <input type="image" name="file" id="img" />
+        </form>
+    </div>
+    <script>
+    var scanner = document.getElementById('scanner');
+    var cam = document.getElementById('cam-1');
+    var cavs = document.getElementById('Canvas');
+    var timer=0;
+
+    var i=1;
+    function pics(){
+        cavs.getContext('2d').drawImage(cam, 0, 0, 450, 300);
+        document.getElementById('img');
+    }
+    function increaseTimer(){
+        return (timer += 1);
+    }
+    function Capture(){
+        if(navigator.mediaDevices.getUserMedia){
+            navigator.mediaDevices.getUserMedia({video:true}).then(function(stream){cam.srcObject=stream;})
+            .catch(function(error){console.log("Something is wrong");})
+        }
+        if(cam.srcObject){
+            scanner.setAttribute('onClick',"Stop()");
+            scanner.innerHTML="Stop";
+        }
+        else{
+
+        }
+    }
+    function Stop(){
+        pics();
+        var tracks = cam.srcObject.getTracks();
+        tracks.forEach((track)=>{track.stop()});
+        cam.srcObject=null;
+        scanner.setAttribute('onClick',"Capture()");
+        scanner.innerHTML="Scan";
+        <!--        clearInterval(timer);-->
+    }
+    var j=0;
+    var pbar = document.getElementById('cl4');
+    var timer2 = setInterval(() => {
+        j += 2.5;
+        if(j < 25){
+          pbar.style.background="linear-gradient(45deg,rgba(230,255,0,0.2), rgba(255,0,0,1))";
+        }
+      else if(j >= 25 && j < 75){
+        pbar.style.background="linear-gradient(45deg,rgba(230,255,0,0.2), rgba(255,255,0,1))";
+      }
+      else{
+        pbar.style.background="linear-gradient(45deg,rgba(20,255,0,0.2), rgba(0,255,0,1))";
+      }
+      pbar.style.width=j.toString() + "%"; document.getElementById('p2').innerHTML=j.toString()+"<span>%</span>";
+        if(j == 100){
+          j=0;
+          clearInterval(timer2);
+        }
+      },200);
+    </script>
+</body>
+</html>

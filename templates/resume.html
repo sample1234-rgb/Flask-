@@ -16,20 +16,20 @@
                             {% endfor %}
                         </div>
                     {% elif d.name == 'Education' %}
-                    <table>
+                    <div class="table">
                         {% for point in d.points %}
-                            <tr style="width:300px;" align="left">
-                                <td class="td-1">
-                                    <p>{{ point.duration }}</p>
-                                </td>
-                                <td>
-                                    <p style="font-size:20px;">{{ point.quali }}</p>
-                                    <p>{{ point.name }}</p>
-                                    <p style="font-size:12px;">CGPA: {{ point.score }}</p>
-                                </td>
-                            </tr>
+                            <div class="table tab-row" style="grid-template-columns:repeat(6,1fr);" align="left">
+                                <div class="td-1">
+                                    {{ point.quali }}
+                                </div>
+                                <div class="td-2">
+                                    <p class="time" style="">{{ point.duration }}</p>
+                                    <p class="inst">{{ point.name }}</p>
+                                    <p class="score" style="">CGPA: {{ point.score }}</p>
+                                </div>
+                            </div>
                         {% endfor %}
-                    </table>
+                    </div>
                     {% else %}
                         <div class="white-spaces"></div>
                         <div style="padding:5px;font-size:15px;" align="left">

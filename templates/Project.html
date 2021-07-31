@@ -9,7 +9,8 @@
                 {% if project.no%2 == 1 %}
                     <div class="prj-item">
                         <div class="prj" align="left">
-                            <b>Project No. {{ project.no }}:</b> {{ project.name }}
+                            <b>{{ project.no }}</b>
+                            <span>{{ project.name }}</span>
                             <p class="desc">
                                 {{ project.desc|safe }}
                             </p>
@@ -32,7 +33,8 @@
                             {% endif %}
                         </div>
                         <div class="prj" align="right">
-                            <strong>Project No. {{ project.no }}</strong>: {{ project.name }}
+                            <b>{{ project.no }}</b>
+                            <span>{{ project.name }}</span>
                             <p class="desc">
                                 {{ project.desc }}
                             </p>
